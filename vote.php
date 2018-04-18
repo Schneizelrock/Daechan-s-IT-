@@ -13,5 +13,9 @@
 <div id="check" class="displaybox">
 </div>
 </form>
+  <form method="post" action="bjb.php">
+Name:<input type="text" value="name" placeholder="Enter your name...">
+Be a member:<input type="button" value="Record Vote">
+</form>
 </body>
 </html>

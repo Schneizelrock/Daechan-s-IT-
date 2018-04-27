@@ -1,26 +1,15 @@
-<html>
-<head><title>Show Candidates</title>
-<script>
+<?php
+session_start();
+include 'connection.php';
+$sec=$_SESSION['sec'];
+$query="select * from Candidate where section=\"$sec\"";
+$result=mysqli_query($dbh,$query) or die("error connecting");
+echo '<form id="myform">';
+while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+{
+echo '<input type="radio" id="na" name="vote" value='.$row['id'].'>'.$row['id'].'---'.$row['name'].'</input>';
+echo '<br/>';
+}
+echo '</form>';
 
-</script>
-</head>
-<body>
-<form id="myform">
-<input type="radio" id="na" name="Nominee_1" value="You have voted ABC">ABC<br>
-<input type="radio" id="na" name="Nominee_2" value="You have voted XYZ">XYZ<br>
-<input type="radio" id="na" name="Nominee_3" value="You have voted POR">POR<br>
-<input type="button" value="Record Vote" onclick="getValidate();"/>
-<div id="check" class="displaybox">
-</div>
-</form>
-  <form method="post" action="bjb.php">
-Name:<input type="text" value="name" placeholder="Enter your name...">
-Be a member:<input type="button" value="Record Vote">
-</form>
-  <form method="post" action="bjb.php">
-Name:<input type="text" value="name" placeholder="Enter your name...">
-Be a member:<input type="button" value="Record Vote">
- Be a member:<input type="button" value="Record Vote">   
-</form>
-</body>
-</html>
+?>
